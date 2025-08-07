@@ -71,3 +71,43 @@
 | TodoList | List<Task> tasks   | getTasksDescending(): List<Task> | tasks contains multiple tasks | list sorted Z-A |
 
 
+## Extension Requirements Domain Model
+
+### 1. I want to be able to get a task by a unique ID.
+
+| Class    | Instance Variables                                                       | Methods                      | Scenario                            | Output      |
+| -------- | ------------------------------------------------------------------------ | ---------------------------- | ----------------------------------- | ----------- |
+| TodoList | List<Task> tasks                                                         | getTaskById(String id): Task | tasks contains a task with ID = "X" | Task object |
+|          |                                                                          |                              | tasks is empty or no task with ID   | null        |
+| Task     | String id<br>String name<br>boolean completed<br>LocalDateTime createdAt |                              |                                     |             |
+
+
+
+### 2. I want to update the name of a task by providing its ID and a new name.
+
+| Class    | Instance Variables                                                       | Methods                                            | Scenario                              | Output |
+| -------- | ------------------------------------------------------------------------ | -------------------------------------------------- | ------------------------------------- | ------ |
+| TodoList | List<Task> tasks                                                         | updateTaskName(String id, String newName): boolean | task with ID exists<br>name is unique | true   |
+|          |                                                                          |                                                    | task not found<br>name not unique     | false  |
+| Task     | String id<br>String name<br>boolean completed<br>LocalDateTime createdAt |                                                    |                                       |        |
+
+
+
+### 3. I want to be able to change the status of a task by providing its ID.
+
+| Class    | Instance Variables                                                       | Methods                              | Scenario            | Output |
+| -------- | ------------------------------------------------------------------------ | ------------------------------------ | ------------------- | ------ |
+| TodoList | List<Task> tasks                                                         | toggleStatusById(String id): boolean | task with ID exists | true   |
+|          |                                                                          |                                      | task not found      | false  |
+| Task     | String id<br>String name<br>boolean completed<br>LocalDateTime createdAt |                                      |                     |        |
+
+
+
+### 4. I want to be able to see the date and time that I created each task.
+
+| Class | Instance Variables                                                       | Methods                       | Scenario | Output           |
+| ----- | ------------------------------------------------------------------------ | ----------------------------- | -------- | ---------------- |
+| Task  | String id<br>String name<br>boolean completed<br>LocalDateTime createdAt | getCreatedAt(): LocalDateTime |          | Date/time object |
+
+   
+
